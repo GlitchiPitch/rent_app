@@ -1,21 +1,13 @@
 from typing import AsyncGenerator
 
 from fastapi import Depends
-from fastapi_users.db import SQLAlchemyBaseUserTableUUID, SQLAlchemyUserDatabase
-from sqlalchemy import MetaData
+from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker, DeclarativeBase, declared_attr
+from sqlalchemy.orm import sessionmaker
+
+from core.models import Base, User
 
 DATABASE_URL = "sqlite+aiosqlite:///./test.db"
-class Base(DeclarativeBase):
-    metadata = MetaData()
-
-    @declared_attr.directive
-    def __tablename__(cls) -> str:
-        return f'{cls.__name__.lower()}s'
-
-class User(Base, SQLAlchemyBaseUserTableUUID):
-    ...
 
 engine = create_async_engine(DATABASE_URL)
 # noinspection PyTypeChecker change to async_sessionmaker
