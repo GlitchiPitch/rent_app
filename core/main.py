@@ -5,7 +5,6 @@ from fastapi import FastAPI
 from api import main_router
 from core.models.database import create_db_and_tables
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Load the ML model

@@ -17,7 +17,6 @@ class AdShow(AdAdd):
     Ad show schema if you need only snow that
     """
     ...
-
 class Ad(AdAdd):
     """
     Main Ad schema

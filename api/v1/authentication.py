@@ -1,9 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 
-from api.authentication.user_manager import fastapi_users, current_active_user, auth_backend
+from core.models.user_manager import fastapi_users, auth_backend
 from core.config import settings
-from core.models.database import User
-from core.schemas import UserUpdate, UserCreate, UserRead
+from core.schemas import UserCreate, UserRead
 
 router = APIRouter(
     prefix=settings.api.auth,
