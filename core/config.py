@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from pydantic.v1 import PostgresDsn
 from pydantic_settings import BaseSettings
 
 class Run(BaseModel):
@@ -7,12 +6,14 @@ class Run(BaseModel):
     port: int = 8000
 
 class Database(BaseModel):
-    url: PostgresDsn = ''
+    url: str = ''
 
 class ApiV1(BaseModel):
     prefix: str = '/v1'
     get_all_ads: str = '/all_ads'
-    new_ads: str = '/new_ads'
+    new_ad: str = '/new_ad'
+    delete_ad: str = '/delete_ad'
+    update_ad: str = '/update_ad'
 
 class Api(BaseModel):
     prefix: str = '/home'
