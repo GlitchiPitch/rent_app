@@ -1,6 +1,8 @@
+import uuid
+
 from pydantic import BaseModel
 
-class AdAdd(BaseModel):
+class AdCreate(BaseModel):
     #TODO link photos
     """
     Ad schema
@@ -12,13 +14,13 @@ class AdAdd(BaseModel):
     cost: int
     address: str | None = None
 
-class AdShow(AdAdd):
+class AdShow(AdCreate):
     """
     Ad show schema if you need only snow that
     """
     ...
-class Ad(AdAdd):
+class Ad(AdCreate):
     """
     Main Ad schema
     """
-    id: int
+    user_id: uuid.UUID
