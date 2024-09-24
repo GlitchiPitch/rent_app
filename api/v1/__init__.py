@@ -10,7 +10,10 @@ router = APIRouter(
 )
 
 async def _get_all_ads():
-    ...
+    return {
+        'status': 200,
+        'message': True
+    }
 
 #TODO how to show return for json
 async def _new_ads(body: AdAdd):
@@ -18,11 +21,12 @@ async def _new_ads(body: AdAdd):
         'status': 200,
         'message': AdShow(**body.model_dump())
     }
+
 @router.get(paths.get_all_ads)
 async def get_all_ads():
-    ...
+    return _get_all_ads()
 
 @router.post(paths.new_ads)
-async def new_ads():
-    ...
+async def new_ads(body: AdAdd):
+    return _new_ads(body)
 
