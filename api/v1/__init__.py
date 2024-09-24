@@ -17,24 +17,21 @@ def _new_ad(
     cost: int,
     address: str | None = None
 ):
-    return {
-        'status': 200,
-        'message': AdShow(
-            room_count=room_count,
-            cost=cost,
-            address=address,
-        )
-    }
+    return AdShow(
+        room_count=room_count,
+        cost=cost,
+        address=address,
+    )
 
 def _delete_ad(
-    id: int
+    ad_id: int
 ):
     return {
         'status': 200,
-        'message': f'ad with id {id} was deleted'
+        'message': f'ad with id {ad_id} was deleted'
     }
 
-NewAdDep = Annotated[dict, Depends(_new_ad)]
+NewAdDep = Annotated[AdShow, Depends(_new_ad)]
 DeleteAdDep = Annotated[dict, Depends(_delete_ad)]
 
 def _get_all_ads():
