@@ -12,8 +12,8 @@ class ApiV1(BaseModel):
     prefix: str = '/v1'
     get_all_ads: str = '/all_ads'
     new_ad: str = '/new_ad'
-    delete_ad: str = '/delete_ad'
-    update_ad: str = '/update_ad'
+    delete_ad: str = '/delete_ad/{id}'
+    update_ad: str = '/update_ad/{id}'
     get_one: str = '/get_one/{id}'
 
 class Api(BaseModel):
