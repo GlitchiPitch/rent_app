@@ -17,6 +17,7 @@ class ApiV1(BaseModel):
 
 class Api(BaseModel):
     prefix: str = '/home'
+    auth: str = '/auth'
     v1: ApiV1 = ApiV1()
 
 class Settings(BaseSettings):
